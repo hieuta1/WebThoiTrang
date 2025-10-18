@@ -1,17 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from webthoitrang_app.models import SanPham
 
 
 # Create your views here.
 def index(request):
     return render(request, "index.html")
 def shop(request):
-    return render(request, "shop.html")
+
+    accSanPham=SanPham.objects.all()
+    dict={
+    'accSanPham':accSanPham,
+}
+    return render(request, 'shop.html', dict)
+
+def shop_details(request,pk):
+
+    accChitiet = SanPham.objects.get(pk=pk)
+    dict={
+        'accChitiet':accChitiet,
+    }
+
+    return render(request, 'shop_details.html', dict)
 def blog(request):
     return render(request, "blog.html")
 def about(request):
     return render(request, "about.html")
-def shop_details(request):
+
     return render(request, "shop_details.html")
 def shop_cart(request):
     return render(request, "shop_cart.html")

@@ -18,14 +18,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from webThoitrang_app import views
+from webthoitrang_app import views
 
 urlpatterns = [
     path("", views.index, name="index"),
     path("shop/", views.shop, name="shop"),
     path("blog/", views.blog, name="blog"),
     path("about/", views.about, name="about"),
-    path("shop_details/", views.shop_details, name="shop_details"),
+    path("shop_details/<int:pk>/", views.shop_details, name="shop_details"),
     path("shop_cart/", views.shop_cart, name="shop_cart"),
     path("check_out/", views.check_out, name="check_out"),
     path("blog_details/", views.blog_details, name="blog_details"),
